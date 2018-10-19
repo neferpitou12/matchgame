@@ -18,7 +18,10 @@ for (i=1; i<9; i++) {
 
 var random = [];
 while (i < values.length) {
-  
+  return Math.floor(Math.random() * 8);
+  random[i]
+  random.push(i);
+  i++
 }
 };
 
