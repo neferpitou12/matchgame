@@ -1,3 +1,6 @@
+$(document).ready(function() {
+
+
 var MatchGame = {};
 
 /*
@@ -8,21 +11,21 @@ var MatchGame = {};
 /*
   Generates and returns an array of matching card values.
  */
-
 MatchGame.generateCardValues = function () {
 var values = [];
 for (i=1; i<9; i++) {
   values.push(i),
-  values.push(i);
+  values.push(i)
+};
+
+var cardValues = [];
+while (0 < values.length) {
+  var index = Math.floor(Math.random() * (values.length));
+  cardValues.push(values[index])
+  values.splice(index, 1)
 }
 
-var random = [];
-while (i < values.length) {
-  return Math.floor(Math.random() * 8);
-  random[i]
-  random.push(i);
-  i++
-}
+return cardValues
 };
 
 /*
@@ -31,7 +34,16 @@ while (i < values.length) {
 */
 
 MatchGame.renderCards = function(cardValues, $game) {
-
+var colors = ['hsl(25, 85%, 65%)', 'hsl(55, 85%, 65%)', 'hsl(90, 85%, 65%)', 'hsl(160, 85%, 65%)',
+'hsl(220, 85%, 65%)', 'hsl(265, 85%, 65%)','hsl(310, 85%, 65%)','hsl(360, 85%, 65%)','hsl(25, 85%, 65%)']
+$game.empty();
+for (index in random) {
+  var $card = $('<div class="col-xs-3 card"></div>')
+  $card.data('value', cardValues[index])
+  $card.data('flip', false)
+  $card.data('color', colors[(cardValues[index] - 1)])
+  $card.append($game)
+}
 };
 
 /*
@@ -42,3 +54,4 @@ MatchGame.renderCards = function(cardValues, $game) {
 MatchGame.flipCard = function($card, $game) {
 
 };
+});
