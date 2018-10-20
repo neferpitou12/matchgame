@@ -108,3 +108,7 @@ MatchGame.flipCard = function($card, $game) {
     $game.data('flippedCards', []);
   }
 };
+
+MatchGame.wonMessage = function() {
+
+}
