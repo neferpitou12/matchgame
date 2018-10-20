@@ -30,9 +30,6 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.card h3 {
   font-weight: 900;
   font-size: 7rem;
   color: rgb(255, 255, 255);
@@ -40,4 +37,9 @@ p {
 
 .card:hover {
   cursor: pointer;
+}
+
+#game {
+  display: flex;
+  flex-wrap: wrap;
 }
