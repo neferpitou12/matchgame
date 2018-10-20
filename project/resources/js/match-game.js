@@ -39,7 +39,7 @@ MatchGame.generateCardValues = function () {
 */
 
 MatchGame.renderCards = function(cardValues, $game) {
-  $game.data() = [];
+  $game.data('flippedCards', []);
 
   var colors = ['hsl(25, 85%, 65%)', 'hsl(55, 85%, 65%)', 'hsl(90, 85%, 65%)', 'hsl(160, 85%, 65%)',
   'hsl(220, 85%, 65%)', 'hsl(265, 85%, 65%)','hsl(310, 85%, 65%)','hsl(360, 85%, 65%)','hsl(25, 85%, 65%)'];
@@ -68,5 +68,29 @@ MatchGame.renderCards = function(cardValues, $game) {
  */
 
 MatchGame.flipCard = function($card, $game) {
-  
+  if ($game.data('flipped')) {
+    return;
+  }
+
+  $('.card').css("background-color", $card.data('color'))
+  $('.card').text($card.data('value'))
+  $('.card').data('flipped', true);
+
+  var flippedCards = $game.data('flippedCards')
+  flippedCards.push($card)
+
+  if (flippedCards.length === 2) {
+    if (flippedCards[0].data('value') === flippedCards[1].data('value')) {
+      $card.css("background-color", rgb(153, 153, 153))
+      $card.css("color", rgb(204, 204, 204))
+    }
+
+    else {
+      $('.card').css("background-color", $card.data('color'))
+      $('.card').text($card.data([]))
+      $('.card').data('flipped', false)
+    }
+
+    $game.data('flippedCards', []);
+  }
 };
